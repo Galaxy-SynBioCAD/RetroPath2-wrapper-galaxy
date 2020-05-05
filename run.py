@@ -28,10 +28,8 @@ if __name__ == "__main__":
     parser.add_argument('-dmax', type=int, default=100)
     parser.add_argument('-mwmax_source', type=int, default=1000)
     parser.add_argument('-mwmax_cof', type=int, default=1000)
-    parser.add_argument('-server_url', type=str)
     parser.add_argument('-scope_csv', type=str)
     parser.add_argument('-timeout', type=int, default=30)
-    parser.add_argument('-galaxy', type=str)
     params = parser.parse_args()
     if params.max_steps<=0:
         logging.error('Maximal number of steps cannot be less or equal to 0')
