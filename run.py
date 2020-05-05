@@ -17,7 +17,7 @@ from argparse import ArgumentParser as argparse_ArgParser
 
 
 if __name__ == "__main__":
-    parser = argparse.argparse_ArgParser('Python wrapper to run RetroPath2.0')
+    parser = argparse_ArgParser('Python wrapper to run RetroPath2.0')
     parser.add_argument('-_file_sinkfile', type=str)
     parser.add_argument('-_file_sourcefile', type=str)
     parser.add_argument('-max_steps', type=int)
