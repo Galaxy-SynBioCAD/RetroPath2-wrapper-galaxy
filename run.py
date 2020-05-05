@@ -5,6 +5,8 @@ sys_path.insert(0, '/home/src')
 from RetroPath2 import entrypoint as RetroPath2_entrypoint
 
 from argparse import ArgumentParser as argparse_ArgParser
+from shutil import move as shutil_move
+from tempfile import TemporaryDirectory as tempfile_tempdir
 
 
 
@@ -53,7 +55,7 @@ if __name__ == "__main__":
         logging.error('Cannot have timeout less than 0 and more than 200: '+str(params.timeout))
         exit(1)
 
-    with tempfile.TemporaryDirectory() as tmpdirname:
+    with tempfile_tempdir() as tmpdirname:
         args = [
             '-sinkfile', params._file_sinkfile,
             '-sourcefile', params._file_sourcefile,
