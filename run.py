@@ -65,7 +65,7 @@ if __name__ == "__main__":
             '-mwmax_source', str(params.mwmax_source),
             '-mwmax_cof', str(params.mwmax_cof),
             '-timeout', str(params.timeout),
-            '-outdir', $tmpdirname,
+            '-outdir', tmpdirname,
             '-is_forward', 'False'
             ]
         RetroPath2_entrypoint(args)
