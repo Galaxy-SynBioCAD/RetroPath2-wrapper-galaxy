@@ -55,9 +55,9 @@ if __name__ == "__main__":
 
     with tempfile.TemporaryDirectory() as tmpdirname:
         args = [
-            '-sinkfile', params._file_sinkfile
+            '-sinkfile', params._file_sinkfile,
             '-sourcefile', params._file_sourcefile,
-            '-max_steps', str(params.max_steps)
+            '-max_steps', str(params.max_steps),
             '-rulesfile', params._file_rulesfile,
             '-topx', str(params.topx),
             '-dmin', str(params.dmin),
