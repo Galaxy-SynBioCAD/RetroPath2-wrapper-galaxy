@@ -43,7 +43,7 @@
 		<data name="scope_csv" format="csv" label="RetroPath pathways" />
   </outputs>
   <help><![CDATA[
-Retropath2.0 docker
+Retropath2.0 wrapper
 ===================
 
 
@@ -70,7 +70,6 @@ Advanced options:
 * **-mwmax_source**\ : (integer, default: 1000)
 * **-mwmax_cof**\ : (integer, default: 1000)
 * **-timeout**\ : (integer, default: 30) Timeout in minutes
-* **-server_url**\ : (string, default: http://0.0.0.0:8888/REST) IP address of the REST service
 
 Output
 ------
@@ -93,7 +92,7 @@ Authors
 License
 -------
 
-This project is licensed under the MIT License - see the `LICENSE.md <LICENSE.md>`_ file for details
+This project is licensed under the MIT License.
 
 Acknowledgments
 ---------------
