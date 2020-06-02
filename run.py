@@ -55,6 +55,11 @@ if __name__ == "__main__":
         logging.error('Cannot have timeout less than 0 and more than 200: '+str(params.timeout))
         exit(1)
 
+    # if params.rulesfile_format=="tar":
+    #     rules_tar = tarfile.open(params._file_rulesfile)
+    #     rules_tar.extract(params._file_rulesfile, './')
+    #     rules_tar.close()
+
     with tempfile_tempdir() as tmpdirname:
         args = [
             '-sinkfile', params._file_sinkfile,
