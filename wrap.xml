@@ -44,7 +44,7 @@
 		</section>
   </inputs>
   <outputs>
-		<data name="scope_csv" format="csv" label="${tool.name} pathways" />
+		<data name="scope_csv" format="csv" label="${tool.name} Pathways" />
   </outputs>
   <help><![CDATA[
 Retropath2.0 wrapper
