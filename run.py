@@ -5,7 +5,7 @@ sys_path.insert(0, '/home/src')
 from RetroPath2 import entrypoint as RetroPath2_entrypoint
 
 from argparse import ArgumentParser as argparse_ArgParser
-from shutil import move as shutil_move
+from shutil import copy as shutil_cp
 from tempfile import TemporaryDirectory as tempfile_tempdir
 
 
@@ -76,4 +76,4 @@ if __name__ == "__main__":
             '-is_forward', 'False'
             ]
         RetroPath2_entrypoint(args)
-        shutil_move(tmpdirname+'/results.csv', params.scope_csv)
+        shutil_cp(tmpdirname+'/results.csv', params.scope_csv)
