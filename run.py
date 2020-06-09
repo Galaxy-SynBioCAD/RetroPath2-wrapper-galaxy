@@ -51,8 +51,8 @@ if __name__ == "__main__":
     if params.dmax<params.dmin:
         logging.error('Cannot have dmin>dmax : dmin: '+str(params.dmin)+', dmax: '+str(params.dmax))
         exit(1)
-    if 200<params.timeout or params.timeout<0:
-        logging.error('Cannot have timeout less than 0 and more than 200: '+str(params.timeout))
+    if params.timeout<0:
+        logging.error('Cannot have timeout less than 0: '+str(params.timeout))
         exit(1)
 
     # if params.rulesfile_format=="tar":
