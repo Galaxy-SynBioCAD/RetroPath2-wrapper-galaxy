@@ -7,7 +7,7 @@ from RetroPath2 import entrypoint as RetroPath2_entrypoint
 from argparse import ArgumentParser as argparse_ArgParser
 from shutil import copy as shutil_cp
 from tempfile import TemporaryDirectory as tempfile_tempdir
-
+from logging import error as logging_error
 
 
 
@@ -34,25 +34,25 @@ if __name__ == "__main__":
     parser.add_argument('-timeout', type=int, default=30)
     params = parser.parse_args()
     if params.max_steps<=0:
-        logging.error('Maximal number of steps cannot be less or equal to 0')
+        logging_error('Maximal number of steps cannot be less or equal to 0')
         exit(1)
     if params.topx<0:
-        logging.error('Cannot have a topx value that is <0: '+str(params.topx))
+        logging_error('Cannot have a topx value that is <0: '+str(params.topx))
         exit(1)
     if params.dmin<0:
-        logging.error('Cannot have a dmin value that is <0: '+str(params.dmin))
+        logging_error('Cannot have a dmin value that is <0: '+str(params.dmin))
         exit(1)
     if params.dmax<0:
-        logging.error('Cannot have a dmax value that is <0: '+str(params.dmax))
+        logging_error('Cannot have a dmax value that is <0: '+str(params.dmax))
         exit(1)
     if params.dmax>1000:
-        logging.error('Cannot have a dmax valie that is >1000: '+str(params.dmax))
+        logging_error('Cannot have a dmax valie that is >1000: '+str(params.dmax))
         exit(1)
     if params.dmax<params.dmin:
-        logging.error('Cannot have dmin>dmax : dmin: '+str(params.dmin)+', dmax: '+str(params.dmax))
+        logging_error('Cannot have dmin>dmax : dmin: '+str(params.dmin)+', dmax: '+str(params.dmax))
         exit(1)
     if params.timeout<0:
-        logging.error('Cannot have timeout less than 0: '+str(params.timeout))
+        logging_error('Cannot have timeout less than 0: '+str(params.timeout))
         exit(1)
 
     # if params.rulesfile_format=="tar":
