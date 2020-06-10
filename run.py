@@ -61,6 +61,7 @@ if __name__ == "__main__":
     #     rules_tar.close()
 
     with tempfile_tempdir() as tmpdirname:
+
         args = [
             '-sinkfile', params._file_sinkfile,
             '-sourcefile', params._file_sourcefile,
@@ -75,5 +76,7 @@ if __name__ == "__main__":
             '-outdir', tmpdirname,
             '-is_forward', 'False'
             ]
+
         RetroPath2_entrypoint(args)
+
         shutil_cp(tmpdirname+'/results.csv', params.scope_csv)
