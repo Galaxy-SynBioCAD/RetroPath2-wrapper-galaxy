@@ -12,7 +12,22 @@
 		<regex match="ramerror" level="error" />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
-		'$__tool_directory__/run.py' -_file_sinkfile '$sinkfile' -_file_sourcefile '$sourcefile' -max_steps '$max_steps' -_file_rulesfile '$rulesfile' -topx '$adv.topx' -dmin '$adv.dmin' -dmax '$adv.dmax' -mwmax_source '$adv.mwmax_source' -mwmax_cof '$adv.mwmax_cof' -timeout '$adv.timeout' -scope_csv '$scope_csv'
+    cd /tmp &&
+    mkdir `basename '$output'` &&
+    python -m retropath2_wrapper
+      '$sinkfile'
+      '$sourcefile'
+      '$rulesfile'
+      --outdir `basename '$output'`
+      --max_steps '$adv.max_steps'
+      --topx '$adv.topx'
+      --dmin '$adv.dmin'
+      --dmax '$adv.dmax'
+      --mwmax_source '$adv.mwmax_source'
+      --mwmax_cof '$adv.mwmax_cof'
+      --timeout '$adv.timeout' &&
+    tar czf '$output' `basename '$output'` &&
+    rm -rf `basename '$output'`
   ]]></command>
   <!-- <command detect_errors="exit_code"><![CDATA[
 		'$__tool_directory__/run.py' -_file_sinkfile '$sinkfile' -_file_sourcefile '$sourcefile' -max_steps '$max_steps' -rulesfile_format '$rulesfile.format' -_file_rulesfile '$rulesfile.input_rules' -topx '$adv.topx' -dmin '$adv.dmin' -dmax '$adv.dmax' -mwmax_source '$adv.mwmax_source' -mwmax_cof '$adv.mwmax_cof' -timeout '$adv.timeout' -scope_csv '$scope_csv'
@@ -44,7 +59,7 @@
 		</section>
   </inputs>
   <outputs>
-		<data name="scope_csv" format="csv" label="${tool.name} Pathways" />
+		<data name="output" format="tar.gz" label="${tool.name}" />
   </outputs>
   <help><![CDATA[
 Retropath2.0 wrapper
