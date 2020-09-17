@@ -18,7 +18,7 @@
       '$sinkfile'
       '$sourcefile'
       '$rulesfile'
-      --outdir `basename '$output'`
+      --outdir /tmp/`basename '$output'`
       --max_steps '$max_steps'
       --topx '$adv.topx'
       --dmin '$adv.dmin'
@@ -26,8 +26,8 @@
       --mwmax_source '$adv.mwmax_source'
       --mwmax_cof '$adv.mwmax_cof'
       --timeout '$adv.timeout' &&
-    tar czf '$output' `basename '$output'` &&
-    rm -rf `basename '$output'`
+    tar czf '$output' /tmp/`basename '$output'` &&
+    rm -rf /tmp/`basename '$output'`
   ]]></command>
   <!-- <command detect_errors="exit_code"><![CDATA[
 		'$__tool_directory__/run.py' -_file_sinkfile '$sinkfile' -_file_sourcefile '$sourcefile' -max_steps '$max_steps' -rulesfile_format '$rulesfile.format' -_file_rulesfile '$rulesfile.input_rules' -topx '$adv.topx' -dmin '$adv.dmin' -dmax '$adv.dmax' -mwmax_source '$adv.mwmax_source' -mwmax_cof '$adv.mwmax_cof' -timeout '$adv.timeout' -scope_csv '$scope_csv'
