@@ -25,7 +25,7 @@
       --mwmax_source '$adv.mwmax_source'
       --mwmax_cof '$adv.mwmax_cof'
       --timeout '$adv.timeout' &&
-    tar czf '$output' /tmp/`basename '$output'` &&
+    cd /tmp && tar czf '$output' `basename '$output'` &&
     rm -rf /tmp/`basename '$output'`
   ]]></command>
   <!-- <command detect_errors="exit_code"><![CDATA[
