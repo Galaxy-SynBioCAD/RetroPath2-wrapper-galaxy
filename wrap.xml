@@ -12,8 +12,7 @@
 		<regex match="ramerror" level="error" />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
-    cd /tmp &&
-    mkdir `basename '$output'` &&
+    mkdir /tmp/`basename '$output'` &&
     python -m retropath2_wrapper
       '$sinkfile'
       '$sourcefile'
