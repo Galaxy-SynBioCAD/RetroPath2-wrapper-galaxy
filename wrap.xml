@@ -4,12 +4,10 @@
     <requirement type="package">retropath2_wrapper</requirement>
   </requirements>
   <stdio>
-		<regex match="ERROR:" level="error" />
-		<regex match="WARNING:" level="warning" />
-		<regex match="timeout" level="error" />
-		<regex match="memoryerror" level="error" />
-		<regex match="oserror" level="error" />
-		<regex match="ramerror" level="error" />
+    <exit_code range="1" level="error" description="Source has been found in the sink" />
+    <exit_code range="2" level="error" description="Cannot find source-in-sink file" />
+    <exit_code range="3" level="error" description="Running the RetroPath2.0 Knime program produced an OSError" />
+    <exit_code range="4" level="error" description="Cannot set the RAM usage limit" />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     mkdir /tmp/`basename '$output'` &&
@@ -25,9 +23,10 @@
       --mwmax_source '$adv.mwmax_source'
       --mwmax_cof '$adv.mwmax_cof'
       --timeout '$adv.timeout' &&
-    cd /tmp && tar czf '$output' `basename '$output'` &&
+    cp /tmp/`basename '$output'`/results.csv '$output' &&
     rm -rf /tmp/`basename '$output'`
   ]]></command>
+  <!-- cd /tmp && tar czf '$output' `basename '$output'` && -->
   <!-- <command detect_errors="exit_code"><![CDATA[
 		'$__tool_directory__/run.py' -_file_sinkfile '$sinkfile' -_file_sourcefile '$sourcefile' -max_steps '$max_steps' -rulesfile_format '$rulesfile.format' -_file_rulesfile '$rulesfile.input_rules' -topx '$adv.topx' -dmin '$adv.dmin' -dmax '$adv.dmax' -mwmax_source '$adv.mwmax_source' -mwmax_cof '$adv.mwmax_cof' -timeout '$adv.timeout' -scope_csv '$scope_csv'
   ]]></command> -->
@@ -58,7 +57,7 @@
 		</section>
   </inputs>
   <outputs>
-		<data name="output" format="tar.gz" label="${tool.name}" />
+		<data name="output" format="csv" label="${tool.name}" />
   </outputs>
   <help><![CDATA[
 Retropath2.0 wrapper
