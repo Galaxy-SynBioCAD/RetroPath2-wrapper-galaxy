@@ -1,4 +1,4 @@
-<tool id="retropath2" name="RetroPath2.0" version="8.0">
+<tool id="retropath2" name="RetroPath2.0">
   <description>Build a reaction network from a set of source compounds to a set of sink compounds</description>
   <requirements>
     <requirement type="package">retropath2_wrapper</requirement>
@@ -11,7 +11,7 @@
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     mkdir /tmp/`basename '$output'` &&
-    python -m retropath2_wrapper
+    python -m retropath2
       '$sinkfile'
       '$sourcefile'
       '$rulesfile'
