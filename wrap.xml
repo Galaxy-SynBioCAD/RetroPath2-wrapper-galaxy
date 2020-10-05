@@ -11,7 +11,7 @@
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     mkdir /tmp/`basename '$output'` &&
-    python -m retropath2
+    python -m retropath2_wrapper
       '$sinkfile'
       '$sourcefile'
       '$rulesfile'
