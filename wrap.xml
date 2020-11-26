@@ -15,7 +15,7 @@
       '$sinkfile'
       '$sourcefile'
       '$rulesfile'
-      --outdir /tmp/`basename '$output'`
+      /tmp/`basename '$output'`
       --max_steps '$max_steps'
       --topx '$adv.topx'
       --dmin '$adv.dmin'
