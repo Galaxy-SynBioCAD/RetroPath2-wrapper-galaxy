@@ -9,8 +9,8 @@
     <exit_code range="3" level="error" description="Running the RetroPath2.0 Knime program produced an OSError" />
     <exit_code range="4" level="error" description="Cannot set the RAM usage limit" />
 	</stdio>
+  <!-- out = $(basename '$output' | cut -f 1 -d '.') && -->
   <command detect_errors="exit_code"><![CDATA[
-    mkdir /tmp/`basename '$output'` &&
     python -m retropath2_wrapper
       '$sinkfile'
       '$sourcefile'
@@ -22,28 +22,12 @@
       --dmax '$adv.dmax'
       --mwmax_source '$adv.mwmax_source'
       --mwmax_cof '$adv.mwmax_cof'
-      --timeout '$adv.timeout' &&
-    cp /tmp/`basename '$output'`/results.csv '$output' &&
+      --timeout '$adv.timeout'              &&
+    /bin/sh $__tool_directory__/copy_res.sh /tmp/`basename '$output'` '$output' &&
     rm -rf /tmp/`basename '$output'`
   ]]></command>
-  <!-- cd /tmp && tar czf '$output' `basename '$output'` && -->
-  <!-- <command detect_errors="exit_code"><![CDATA[
-		'$__tool_directory__/run.py' -_file_sinkfile '$sinkfile' -_file_sourcefile '$sourcefile' -max_steps '$max_steps' -rulesfile_format '$rulesfile.format' -_file_rulesfile '$rulesfile.input_rules' -topx '$adv.topx' -dmin '$adv.dmin' -dmax '$adv.dmax' -mwmax_source '$adv.mwmax_source' -mwmax_cof '$adv.mwmax_cof' -timeout '$adv.timeout' -scope_csv '$scope_csv'
-  ]]></command> -->
   <inputs>
     <param name="rulesfile" type="data" format="csv" label="Rules File" />
-    <!-- <conditional name="rulesfile">
-      <param name="format" type="select" label="Rules input format">
-        <option value="tar" type="text" selected="true">TAR</option>
-        <option value="csv" type="text">CSV</option>
-      </param>
-      <when value="csv">
-		    <param name="input_rules" type="data" format="csv" label="Rules File" />
-      </when>
-      <when value="tar">
-		    <param name="input_rules" type="data" format="tar" label="Rules File" />
-      </when>
-    </conditional> -->
 		<param name="sinkfile" type="data" format="csv" label="Sink File" />
 		<param name="sourcefile" type="data" format="csv" label="Source File" />
 		<param name="max_steps" type="integer" value="3" label="Maximal Pathway length" />
