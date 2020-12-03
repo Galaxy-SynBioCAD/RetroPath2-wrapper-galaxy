@@ -8,23 +8,21 @@
     <exit_code range="2" level="error" description="Cannot find source-in-sink file" />
     <exit_code range="3" level="error" description="Running the RetroPath2.0 Knime program produced an OSError" />
     <exit_code range="4" level="error" description="Cannot set the RAM usage limit" />
+    <exit_code range="5" level="error" description="RetroPath2.0 has not found any solution" />
 	</stdio>
-  <!-- out = $(basename '$output' | cut -f 1 -d '.') && -->
   <command detect_errors="exit_code"><![CDATA[
-    python -m retropath2_wrapper
+    python '$__tool_directory__/wrap.py'
       '$sinkfile'
       '$sourcefile'
       '$rulesfile'
-      /tmp/`basename '$output'`
+      /tmp
       --max_steps '$max_steps'
       --topx '$adv.topx'
       --dmin '$adv.dmin'
       --dmax '$adv.dmax'
       --mwmax_source '$adv.mwmax_source'
       --mwmax_cof '$adv.mwmax_cof'
-      --timeout '$adv.timeout'              &&
-    /bin/sh $__tool_directory__/copy_res.sh /tmp/`basename '$output'` '$output' &&
-    rm -rf /tmp/`basename '$output'`
+      --timeout '$adv.timeout'
   ]]></command>
   <inputs>
     <param name="rulesfile" type="data" format="csv" label="Rules File" />
