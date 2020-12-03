@@ -9,7 +9,7 @@ from shutil             import copyfile
 def _cli():
     parser = build_args_parser()
     parser.add_argument('outfile', type=str)
-    args  = parser.parse_args()
+    args = parser.parse_args()
 
     with TemporaryDirectory() as temp_d:
 
@@ -22,9 +22,6 @@ def _cli():
                                     args.mwmax_source, args.mwmax_cof,
                                     args.timeout,
                                     args.forward)
-
-        print(r_code)
-        print(result)
 
         print()
         if r_code > 0:

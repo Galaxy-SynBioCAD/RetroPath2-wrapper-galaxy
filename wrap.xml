@@ -4,11 +4,11 @@
     <requirement type="package" version="1.4.1">retropath2_wrapper</requirement>
   </requirements>
   <stdio>
-    <exit_code range="1" level="error" description="Source has been found in the sink" />
-    <exit_code range="2" level="error" description="Cannot find source-in-sink file" />
-    <exit_code range="3" level="error" description="Running the RetroPath2.0 Knime program produced an OSError" />
-    <exit_code range="4" level="error" description="Cannot set the RAM usage limit" />
-    <exit_code range="5" level="warning" description="RetroPath2.0 has not found any solution" />
+    <exit_code range="1" level="error"   description="Source has been found in the sink"                          />
+    <exit_code range="2" level="error"   description="Cannot find source-in-sink file"                            />
+    <exit_code range="3" level="error"   description="Running the RetroPath2.0 Knime program produced an OSError" />
+    <exit_code range="4" level="error"   description="Cannot set the RAM usage limit"                             />
+    <exit_code range="5" level="warning" description="RetroPath2.0 has not found any solution"                    />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     python '$__tool_directory__/wrap.py'
@@ -26,17 +26,17 @@
       --timeout '$adv.timeout'
   ]]></command>
   <inputs>
-    <param name="rulesfile" type="data" format="csv" label="Rules File" />
-		<param name="sinkfile" type="data" format="csv" label="Sink File" />
-		<param name="sourcefile" type="data" format="csv" label="Source File" />
-		<param name="max_steps" type="integer" value="3" label="Maximal Pathway length" />
+    <param name="rulesfile"  type="data" format="csv" label="Rules File"             />
+		<param name="sinkfile"   type="data" format="csv" label="Sink File"              />
+		<param name="sourcefile" type="data" format="csv" label="Source File"            />
+		<param name="max_steps"  type="integer" value="3" label="Maximal Pathway length" />
 		<section name="adv" title="Advanced Options" expanded="false">
-			<param name="topx" type="integer" value="100" label="TopX" />
-			<param name="dmin" type="integer" value="0" label="Minimum rule diameter" />
-			<param name="dmax" type="integer" value="1000" label="Maximum rule diameter" />
-      <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)" />
-			<param name="mwmax_cof" type="integer" value="1000" label="Molecular weight of coefficients (Da)" />
-			<param name="timeout" type="integer" value="30" label="Timeout (min)" />
+			<param name="topx"         type="integer" value="100"  label="TopX"                                  />
+			<param name="dmin"         type="integer" value="0"    label="Minimum rule diameter"                 />
+			<param name="dmax"         type="integer" value="1000" label="Maximum rule diameter"                 />
+      <param name="mwmax_source" type="integer" value="1000" label="Molecular weight of source (Da)"       />
+			<param name="mwmax_cof"    type="integer" value="1000" label="Molecular weight of coefficients (Da)" />
+			<param name="timeout"      type="integer" value="30"   label="Timeout (min)"                         />
 		</section>
   </inputs>
   <outputs>
