@@ -16,6 +16,7 @@
       '$sourcefile'
       '$rulesfile'
       /tmp
+      '$output'
       --max_steps '$max_steps'
       --topx '$adv.topx'
       --dmin '$adv.dmin'
