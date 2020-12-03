@@ -1,7 +1,6 @@
 
 
 from retropath2_wrapper import retropath2, build_args_parser
-from os                 import path as os_path
 from sys                import exit as sys_exit
 from tempfile           import TemporaryDirectory
 from shutil             import copyfile
@@ -24,14 +23,19 @@ def _cli():
                                     args.timeout,
                                     args.forward)
 
-    print()
-    if r_code > 0:
-        print('*** Error:')
-        print('     ', result)
-    else:
-        copyfile(result, args.outfile)
-    print()
+        print(r_code)
+        print(result)
+
+        print()
+        if r_code > 0:
+            print('*** Error:')
+            print('     ', result)
+        else:
+            copyfile(result, args.outfile)
+        print()
+
+    return r_code
 
 
 if __name__ == '__main__':
-    _cli()
+    sys_exit(_cli())
