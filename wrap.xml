@@ -8,7 +8,7 @@
     <exit_code range="2" level="error"   description="Cannot find source-in-sink file"                            />
     <exit_code range="3" level="error"   description="Running the RetroPath2.0 Knime program produced an OSError" />
     <exit_code range="4" level="error"   description="Cannot set the RAM usage limit"                             />
-    <exit_code range="5" level="warning" description="RetroPath2.0 has not found any solution"                    />
+    <exit_code range="5" level="warning" description="RetroPath2.0 has found no solution"                    />
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
     python '$__tool_directory__/wrap.py'
