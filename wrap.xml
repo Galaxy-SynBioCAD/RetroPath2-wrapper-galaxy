@@ -32,7 +32,7 @@
     <param name="rulesfile"    type="data" format="csv" label="Rules File"             />
 		<param name="sinkfile"     type="data" format="csv" label="Sink File"              />
 		<param name="source_inchi" type="text"              label="Source InChI"           />
-    <param name="source_name"  type="text" optional="true" label="Source name"         />
+    <param name="source_name"  type="text" value="target" optional="true" label="Source name"         />
 		<param name="max_steps"    type="integer" value="3" label="Maximal Pathway length" />
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="topx"         type="integer" value="100"  label="TopX"                                  />
