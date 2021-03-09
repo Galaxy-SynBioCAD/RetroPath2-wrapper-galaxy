@@ -1,6 +1,10 @@
 
 
-from retropath2_wrapper import retropath2, build_args_parser
+from retropath2_wrapper import (
+    retropath2,
+    build_args_parser,
+    parse_and_check_args
+)
 from sys                import exit as sys_exit
 from tempfile           import TemporaryDirectory
 from shutil             import copyfile
@@ -9,14 +13,14 @@ from shutil             import copyfile
 def _cli():
     parser = build_args_parser()
     parser.add_argument('outfile', type=str)
-    args = parser.parse_args()
+    args = parse_and_check_args(parser)
 
     with TemporaryDirectory() as temp_d:
 
         r_code, result = retropath2(
-            sinkfile = args.sinkfile,
-            sourcefile = args.sourcefile,
-            rulesfile = args.rulesfile,
+            sink_file = args.sink_file,
+            source_file = args.source_file,
+            rules_file = args.rules_file,
             outdir = temp_d,
             kexec = None,
             workflow = None,

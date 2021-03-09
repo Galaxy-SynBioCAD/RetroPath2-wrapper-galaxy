@@ -13,10 +13,10 @@
   <command detect_errors="exit_code"><![CDATA[
     python '$__tool_directory__/wrap.py'
       '$sinkfile'
-      '$sourcefile'
       '$rulesfile'
-      /tmp
+      out
       '$output'
+      --source_inchi '$source_inchi'
       --max_steps '$max_steps'
       --topx '$adv.topx'
       --dmin '$adv.dmin'
@@ -26,10 +26,10 @@
       --timeout '$adv.timeout'
   ]]></command>
   <inputs>
-    <param name="rulesfile"  type="data" format="csv" label="Rules File"             />
-		<param name="sinkfile"   type="data" format="csv" label="Sink File"              />
-		<param name="sourcefile" type="data" format="csv" label="Source File"            />
-		<param name="max_steps"  type="integer" value="3" label="Maximal Pathway length" />
+    <param name="rulesfile"    type="data" format="csv" label="Rules File"             />
+		<param name="sinkfile"     type="data" format="csv" label="Sink File"              />
+		<param name="source_inchi" type="text" label="Source InChI"                        />
+		<param name="max_steps"    type="integer" value="3" label="Maximal Pathway length" />
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="topx"         type="integer" value="100"  label="TopX"                                  />
 			<param name="dmin"         type="integer" value="0"    label="Minimum rule diameter"                 />
