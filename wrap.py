@@ -34,15 +34,15 @@ def _cli():
             is_forward = args.forward
         )
 
-        print()
-        if r_code > 0:
-            print('*** Error:')
-            print('     ', result)
-        else:
-            copyfile(result, args.outfile)
-        print()
+    if r_code == 'OK' or r_code == 'TimeLimit':
+        logger.info('{attr1}Results{attr2}'.format(attr1=attr('bold'), attr2=attr('reset')))
+        logger.info('   |- Checking... ')
+        r_code = check_results(result_files, logger)
+        logger.info('   |--path: '+args.outdir)
+    else:
+        logger.error('Exiting...')
 
-    return r_code
+    return __ERROR_CODES__[r_code]
 
 
 if __name__ == '__main__':
