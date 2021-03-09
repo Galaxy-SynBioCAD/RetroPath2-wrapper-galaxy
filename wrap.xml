@@ -12,23 +12,27 @@
 	</stdio>
   <command detect_errors="exit_code"><![CDATA[
       python -m retropath2_wrapper
-        '$sinkfile'
-        '$rulesfile'
-        out
-        --source_inchi '$source_inchi'
-        --max_steps '$max_steps'
-        --topx '$adv.topx'
-        --dmin '$adv.dmin'
-        --dmax '$adv.dmax'
-        --mwmax_source '$adv.mwmax_source'
-        --mwmax_cof '$adv.mwmax_cof'
-        --timeout '$adv.timeout'
+          '$sinkfile'
+          '$rulesfile'
+          out
+          --source_inchi '$source_inchi'
+        #if $source_name:
+          --source_name '$source_name'
+        #end if
+          --max_steps '$max_steps'
+          --topx '$adv.topx'
+          --dmin '$adv.dmin'
+          --dmax '$adv.dmax'
+          --mwmax_source '$adv.mwmax_source'
+          --mwmax_cof '$adv.mwmax_cof'
+          --timeout '$adv.timeout'
    && cp out/*_scope.csv '$output'
   ]]></command>
   <inputs>
     <param name="rulesfile"    type="data" format="csv" label="Rules File"             />
 		<param name="sinkfile"     type="data" format="csv" label="Sink File"              />
 		<param name="source_inchi" type="text"              label="Source InChI"           />
+    <param name="source_name"  type="text" optional="true" label="Source name"         />
 		<param name="max_steps"    type="integer" value="3" label="Maximal Pathway length" />
 		<section name="adv" title="Advanced Options" expanded="false">
 			<param name="topx"         type="integer" value="100"  label="TopX"                                  />
